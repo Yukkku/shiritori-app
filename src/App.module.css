@@ -8,11 +8,13 @@
 }
 
 .wordinput {
+  transform: translateY(3px);
   text-align: center;
   font-size: 2em;
   outline: none;
   width: min(100%, 20em);
   box-sizing: border-box;
+  background-color: transparent;
 }
 
 .reset {

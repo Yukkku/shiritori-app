@@ -1,6 +1,7 @@
 import { createSignal, Show } from "solid-js";
 import styles from "./App.module.css";
 import Error from "./Error.tsx";
+import LastWord from "./LastWord.tsx";
 
 export default () => {
   const [lastWord, setlastWord] = createSignal("しりとり");
@@ -13,7 +14,7 @@ export default () => {
   let wordInput: HTMLInputElement;
   return (<div class={styles.app}>
     <h1>しりとり</h1>
-    <div class={styles.lastword}>Last Word: {lastWord()}</div>
+    <LastWord word={lastWord()} />
     <input ref={elem => wordInput = elem} class={styles.wordinput} onKeyDown={(e) => {
       if (e.key !== "Enter") return;
       const word = wordInput.value;
