@@ -20,11 +20,11 @@ export default () => {
         alert("つながってないよ!");
         return;
       }
-      if (word.at(-1)) {
-        alert('「ん」で終わってる!');
+      if (word.at(-1) === "ん") {
+        alert("「ん」で終わってる!");
         reset();
       } else if (used.has(word)) {
-        alert('その単語は2回目だよ!');
+        alert("その単語は2回目だよ!");
         reset();
       } else {
         setlastWord(word);
