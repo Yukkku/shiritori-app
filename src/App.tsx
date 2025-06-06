@@ -28,6 +28,7 @@ export default () => {
         reset();
       } else {
         setlastWord(word);
+        used.add(word);
         wordInput.value = "";
       }
     }} />
