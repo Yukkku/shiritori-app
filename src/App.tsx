@@ -3,6 +3,11 @@ import styles from "./App.module.css";
 
 export default () => {
   const [lastWord, setlastWord] = createSignal("しりとり");
+  const used = new Set<string>();
+  const reset = () => {
+    setlastWord("しりとり");
+    used.clear();
+  };
   let wordInput: HTMLInputElement;
   return (<div class={styles.app}>
     <h1>しりとり</h1>
@@ -15,9 +20,17 @@ export default () => {
         alert("つながってないよ!");
         return;
       }
-      setlastWord(word);
-      wordInput.value = "";
+      if (word.at(-1)) {
+        alert('「ん」で終わってる!');
+        reset();
+      } else if (used.has(word)) {
+        alert('その単語は2回目だよ!');
+        reset();
+      } else {
+        setlastWord(word);
+        wordInput.value = "";
+      }
     }} />
-    <button class={styles.reset} onClick={() => { setlastWord("しりとり") }}>リセット</button>
+    <button class={styles.reset} onClick={reset}>リセット</button>
   </div>);
 };
