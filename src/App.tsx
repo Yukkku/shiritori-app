@@ -17,5 +17,6 @@ export default () => {
       setlastWord(word);
       wordInput.value = '';
     }} />
+    <button onClick={() => { setlastWord("しりとり") }}>リセット</button>
   </>);
 };
