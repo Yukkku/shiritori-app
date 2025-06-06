@@ -1,12 +1,13 @@
 import { createSignal } from "solid-js";
+import styles from "./App.module.css";
 
 export default () => {
   const [lastWord, setlastWord] = createSignal("しりとり");
   let wordInput: HTMLInputElement;
-  return (<>
+  return (<div class={styles.app}>
     <h1>しりとり</h1>
-    <div>Last Word: {lastWord()}</div>
-    <input ref={elem => wordInput = elem} onKeyDown={(e) => {
+    <div class={styles.lastword}>Last Word: {lastWord()}</div>
+    <input ref={elem => wordInput = elem} class={styles.wordinput} onKeyDown={(e) => {
       if (e.key !== "Enter") return;
       const word = wordInput.value;
       if (word === '') return;
@@ -17,6 +18,6 @@ export default () => {
       setlastWord(word);
       wordInput.value = "";
     }} />
-    <button onClick={() => { setlastWord("しりとり") }}>リセット</button>
-  </>);
+    <button class={styles.reset} onClick={() => { setlastWord("しりとり") }}>リセット</button>
+  </div>);
 };

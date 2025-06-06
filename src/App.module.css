@@ -1,0 +1,22 @@
+.app {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  text-align: center;
+}
+
+.wordinput {
+  text-align: center;
+  font-size: 2em;
+  outline: none;
+  width: min(100%, 20em);
+  box-sizing: border-box;
+}
+
+.reset {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}
