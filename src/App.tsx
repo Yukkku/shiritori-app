@@ -1,5 +1,6 @@
 import { createSignal, Show } from "solid-js";
 import styles from "./App.module.css";
+import Error from "./Error.tsx";
 
 export default () => {
   const [lastWord, setlastWord] = createSignal("しりとり");
@@ -34,7 +35,7 @@ export default () => {
         wordInput.value = "";
       }
     }} />
-    <Show when={errFlg()}><div class={styles.error}>前の単語とつながってないよ!</div></Show>
+    <Show when={errFlg()}><Error msg="前の単語とつながってないよ!" /></Show>
     <button class={styles.reset} onClick={reset}>リセット</button>
   </div>);
 };

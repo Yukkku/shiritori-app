@@ -20,14 +20,3 @@
   top: 1em;
   right: 1em;
 }
-
-.error {
-  margin: 1em;
-  border-radius: 0.5em;
-  padding: 0.5em;
-
-  background-color: rgb(255, 200, 200);
-  @media (prefers-color-scheme: dark) {
-    background-color: rgb(150, 0, 0);
-  }
-}
