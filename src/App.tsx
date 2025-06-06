@@ -1,8 +1,9 @@
-import { createSignal } from "solid-js";
+import { createSignal, Show } from "solid-js";
 import styles from "./App.module.css";
 
 export default () => {
   const [lastWord, setlastWord] = createSignal("しりとり");
+  const [errFlg, setErrFlg] = createSignal(false);
   const used = new Set<string>();
   const reset = () => {
     setlastWord("しりとり");
@@ -17,9 +18,10 @@ export default () => {
       const word = wordInput.value;
       if (word === '') return;
       if (word[0] !== lastWord().at(-1)) {
-        alert("つながってないよ!");
+        setErrFlg(true);
         return;
       }
+      setErrFlg(false);
       if (word.at(-1) === "ん") {
         alert("「ん」で終わってる!");
         reset();
@@ -32,6 +34,7 @@ export default () => {
         wordInput.value = "";
       }
     }} />
+    <Show when={errFlg()}><div class={styles.error}>前の単語とつながってないよ!</div></Show>
     <button class={styles.reset} onClick={reset}>リセット</button>
   </div>);
 };
