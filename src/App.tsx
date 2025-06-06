@@ -1,7 +1,7 @@
-import { createSignal } from 'solid-js';
+import { createSignal } from "solid-js";
 
 export default () => {
-  const [lastWord, setlastWord] = createSignal('しりとり');
+  const [lastWord, setlastWord] = createSignal("しりとり");
   let wordInput: HTMLInputElement;
   return (<>
     <h1>しりとり</h1>
@@ -11,11 +11,11 @@ export default () => {
       const word = wordInput.value;
       if (word === '') return;
       if (word[0] !== lastWord().at(-1)) {
-        alert('つながってないよ!');
+        alert("つながってないよ!");
         return;
       }
       setlastWord(word);
-      wordInput.value = '';
+      wordInput.value = "";
     }} />
     <button onClick={() => { setlastWord("しりとり") }}>リセット</button>
   </>);
