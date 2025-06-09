@@ -8,6 +8,7 @@ export default () => {
   const reset = () => {
     setHistory(["しりとり"]);
     wordInput.value = '';
+    setErrFlg(false);
   };
   let wordInput: HTMLInputElement;
   let scrollwrapper: HTMLDivElement;
