@@ -7,14 +7,23 @@
   text-align: center;
 }
 
-.wordinput {
-  transform: translateY(3px);
-  text-align: center;
+.scrollwrapper {
   font-size: 2em;
-  outline: none;
-  width: min(100%, 20em);
-  box-sizing: border-box;
-  background-color: transparent;
+  overflow: hidden;
+  height: 4em;
+  line-height: 2;
+
+  & > input {
+   display: block;
+    margin: 0;
+    border: 0;
+    outline: none;
+    padding: 0;
+    height: 2em;
+    text-align: center;
+    font-size: 1em;
+    color: canvasText;
+  }
 }
 
 .reset {
