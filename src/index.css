@@ -1,6 +1,24 @@
 :root {
   font-family: sans-serif;
   color-scheme: light dark;
+  --back-color: #ddd;
+  --text-color: #000;
+  --error-back: #daa;
+  --error-icon: #f00;
+  @media(prefers-color-scheme: dark) {
+    --back-color: #333;
+    --text-color: #fff;
+    --error-back: #500;
+    --error-icon: #f00;
+  }
+  @media (forced-colors: active) {
+    --back-color: canvas;
+    --text-color: canvasText;
+    --error-back: canvas;
+    --error-icon: #f00;
+  }
+  background-color: var(--back-color);
+  color: var(--text-color);
 }
 
 body {

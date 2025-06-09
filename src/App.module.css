@@ -20,9 +20,10 @@
     outline: none;
     padding: 0;
     height: 2em;
+    background-color: transparent;
     text-align: center;
     font-size: 1em;
-    color: canvasText;
+    color: var(--text-color);
   }
 }
 
