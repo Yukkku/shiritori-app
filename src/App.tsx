@@ -11,10 +11,9 @@ export default () => {
     setErrFlg(false);
   };
   let wordInput: HTMLInputElement;
-  let scrollwrapper: HTMLDivElement;
   return (<div class={styles.app}>
     <h1>しりとり</h1>
-    <div ref={elem => scrollwrapper = elem} class={styles.scrollwrapper}>
+    <div class={styles.scrollwrapper}>
       <For each={history()}>{word => <input value={word} disabled />}</For>
       <input ref={elem => wordInput = elem} onKeyDown={(e) => {
         if (e.key !== "Enter") return;
