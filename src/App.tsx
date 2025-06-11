@@ -38,6 +38,7 @@ export default () => {
         }
       }} readonly={finMsg() != null} />
     </div>
+    <div class={styles.inputdeco} />
     <Show when={errFlg()}><Error msg="前の単語とつながってないよ!" /></Show>
     <Show when={finMsg() != null}><Result reason={finMsg()!} history={history()} onRetry={reset} /></Show>
     <button class={styles.reset} onClick={reset}>リセット</button>

@@ -8,13 +8,14 @@
 }
 
 .scrollwrapper {
+  position: relative;
   font-size: 2em;
   overflow: hidden;
   height: 4em;
   line-height: 2;
 
   & > input {
-   display: block;
+    display: block;
     margin: 0;
     border: 0;
     outline: none;
@@ -24,6 +25,43 @@
     text-align: center;
     font-size: 1em;
     color: var(--text-color);
+    width: 15em;
+  }
+}
+
+.inputdeco {
+  background-color: var(--text-color);
+  height: 3px;
+  margin-top: -2px;
+  width: 30em;
+  position: relative;
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    box-sizing: border-box;
+    width: 2.4em;
+    height: 2.4em;
+    border: 5px solid var(--text-color);
+    border-bottom: none;
+    border-left: none;
+    bottom: calc(1px + 2em - 1.2em);
+    left: calc(-2.4em * sqrt(2));
+    transform: rotate(45deg);
+  }
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    box-sizing: border-box;
+    width: 2.4em;
+    height: 2.4em;
+    border: 5px solid var(--text-color);
+    border-top: none;
+    border-right: none;
+    bottom: calc(1px + 2em - 1.2em);
+    right: calc(-2.4em * sqrt(2));
+    transform: rotate(45deg);
   }
 }
 
