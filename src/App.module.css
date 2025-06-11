@@ -35,7 +35,7 @@
   margin-top: -2px;
   width: 30em;
   position: relative;
-  &::before {
+  &::before, &::after {
     content: "";
     display: block;
     position: absolute;
@@ -43,25 +43,18 @@
     width: 2.4em;
     height: 2.4em;
     border: 5px solid var(--text-color);
-    border-bottom: none;
-    border-left: none;
     bottom: calc(1px + 2em - 1.2em);
-    left: calc(-2.4em * sqrt(2));
     transform: rotate(45deg);
   }
+  &::before {
+    border-bottom: none;
+    border-left: none;
+    left: calc(-2.4em * sqrt(2));
+  }
   &::after {
-    content: "";
-    display: block;
-    position: absolute;
-    box-sizing: border-box;
-    width: 2.4em;
-    height: 2.4em;
-    border: 5px solid var(--text-color);
     border-top: none;
     border-right: none;
-    bottom: calc(1px + 2em - 1.2em);
     right: calc(-2.4em * sqrt(2));
-    transform: rotate(45deg);
   }
 }
 
