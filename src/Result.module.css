@@ -13,9 +13,39 @@
 
 .result {
   background-color: var(--back-color);
-  border-radius: 1em;
-  border: 1px solid var(--text-color);
-  padding: 2em;
+  padding: 1em calc(1em + 10px);
+  clip-path: polygon(
+    calc(35px - sqrt(2) * 10px) 0,
+    0 calc(35px - sqrt(2) * 10px),
+    0 100%,
+    calc(100% - 35px + sqrt(2) * 10px) 100%,
+    100% calc(100% - 35px + sqrt(2) * 10px),
+    100% 0
+  );
+  position: relative;
+  &::before, &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    background-color: var(--text-color);
+    clip-path: polygon(
+      60px 0,
+      calc(25px - sqrt(2) * 5px) 0,
+      0 calc(25px - sqrt(2) * 5px),
+      0 35px,
+      5px 35px,
+      5px 20px,
+      20px 5px,
+      60px 5px
+    );
+  }
+  &::after {
+    transform: rotate(180deg);
+  }
 }
 
 .retry {

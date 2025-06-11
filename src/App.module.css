@@ -31,7 +31,7 @@
 
 .inputdeco {
   background-color: var(--text-color);
-  height: 3px;
+  height: 5px;
   margin-top: -2px;
   width: 30em;
   position: relative;
@@ -43,7 +43,7 @@
     width: 2.4em;
     height: 2.4em;
     border: 5px solid var(--text-color);
-    bottom: calc(1px + 2em - 1.2em);
+    bottom: calc(3px + 2em - 1.2em);
     transform: rotate(45deg);
   }
   &::before {
