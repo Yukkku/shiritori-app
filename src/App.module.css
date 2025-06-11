@@ -1,5 +1,5 @@
 .app {
-  padding: 1em;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,55 +9,75 @@
 
 .scrollwrapper {
   position: relative;
-  font-size: 2em;
   overflow: hidden;
-  height: 4em;
-  line-height: 2;
-
+  height: 12rem;
   & > input {
     display: block;
     margin: 0;
     border: 0;
-    outline: none;
     padding: 0;
-    height: 2em;
+    outline: none;
+    height: 4rem;
     background-color: transparent;
     text-align: center;
-    font-size: 1em;
+    font-size: 2rem;
     color: var(--text-color);
-    width: 15em;
+    width: 30rem;
     &:focus::placeholder {
       color: transparent;
     }
+    &:first-child {
+      height: 6rem;
+      font-weight: bold;
+      font-size: 3rem;
+    }
   }
+}
+
+.arrow {
+  width: 100%;
+  height: 2.6rem;
+  margin: -0.3rem 0;
+  background-color: var(--text-color);
+  clip-path: polygon(
+    calc(50% + 2.5px) 0,
+    calc(50% + 2.5px) calc(100% - 2.5px - 5px * sqrt(2)),
+    calc(50% + 1.3rem - 3px) calc(50% - 5px * sqrt(2) + 3px),
+    calc(50% + 1.3rem + 5px / sqrt(2) - 3px) calc(50% - 5px / sqrt(2) + 3px),
+    50% 100%,
+    calc(50% - 1.3rem - 5px / sqrt(2) + 3px) calc(50% - 5px / sqrt(2) + 3px),
+    calc(50% - 1.3rem + 3px) calc(50% - 5px * sqrt(2) + 3px),
+    calc(50% - 2.5px) calc(100% - 2.5px - 5px * sqrt(2)),
+    calc(50% - 2.5px) 0
+  );
 }
 
 .inputdeco {
   background-color: var(--text-color);
   height: 5px;
   margin-top: -2px;
-  width: 30em;
+  width: 30rem;
   position: relative;
   &::before, &::after {
     content: "";
     display: block;
     position: absolute;
     box-sizing: border-box;
-    width: 2.4em;
-    height: 2.4em;
+    width: 2.4rem;
+    height: 2.4rem;
     border: 5px solid var(--text-color);
-    bottom: calc(3px + 2em - 1.2em);
+    bottom: calc(3px + 2rem - 1.2rem);
     transform: rotate(45deg);
   }
   &::before {
     border-bottom: none;
     border-left: none;
-    left: calc(-2.4em * sqrt(2));
+    left: calc(-2.4rem * sqrt(2));
   }
   &::after {
     border-top: none;
     border-right: none;
-    right: calc(-2.4em * sqrt(2));
+    right: calc(-2.4rem * sqrt(2));
   }
 }
 

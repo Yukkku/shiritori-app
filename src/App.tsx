@@ -15,9 +15,8 @@ export default () => {
   };
   let wordInput: HTMLInputElement;
   return (<div class={styles.app}>
-    <h1>しりとり</h1>
     <div class={styles.scrollwrapper}>
-      <For each={history()}>{word => <input value={word} disabled />}</For>
+      <For each={history()}>{word => <><input value={word} disabled /><div class={styles.arrow} /></>}</For>
       <input ref={elem => wordInput = elem} placeholder={history().length === 1 ? "りんご" : ""} onKeyDown={(e) => {
         if (e.key !== "Enter") return;
         const word = wordInput.value;
