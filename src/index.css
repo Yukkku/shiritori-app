@@ -24,3 +24,9 @@
 body {
   margin: 0;
 }
+
+button {
+  padding: 1em;
+  border-radius: 999px;
+  border: 1px solid var(--text-color);
+}

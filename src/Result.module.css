@@ -17,3 +17,7 @@
   border: 1px solid var(--text-color);
   padding: 2em;
 }
+
+.retry {
+  margin-top: 0.5em;
+}
