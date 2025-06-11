@@ -26,6 +26,9 @@
     font-size: 1em;
     color: var(--text-color);
     width: 15em;
+    &:focus::placeholder {
+      color: transparent;
+    }
   }
 }
 

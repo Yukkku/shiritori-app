@@ -18,7 +18,7 @@ export default () => {
     <h1>しりとり</h1>
     <div class={styles.scrollwrapper}>
       <For each={history()}>{word => <input value={word} disabled />}</For>
-      <input ref={elem => wordInput = elem} onKeyDown={(e) => {
+      <input ref={elem => wordInput = elem} placeholder={history().length === 1 ? "りんご" : ""} onKeyDown={(e) => {
         if (e.key !== "Enter") return;
         const word = wordInput.value;
         if (word === '') return;
