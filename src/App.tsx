@@ -34,6 +34,7 @@ export default () => {
     return 4 - len * 7;
   };
   return (<div class={styles.app}>
+    <div class={`${styles.smalltitle} ${history().length === 1 ? "" : styles.smallshow}`}>しりとり</div>
     <div class={`${styles.scrollwrapper} ${history().length === 1 ? styles.titleshown : ""}`}>
       <div class={styles.scrollinner} style={{ top: `${scrollamount(history().length)}rem` }}>
         <For each={history()}>{word => <><input value={word} disabled /><div class={styles.arrow} /></>}</For>

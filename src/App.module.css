@@ -7,6 +7,21 @@
   text-align: center;
 }
 
+.smalltitle {
+  position: absolute;
+  top: 0.5rem;
+  left: -0.5rem;
+  opacity: 0;
+  user-select: none;
+  font-size: 2rem;
+  font-weight: bold;
+  &.smallshow {
+    opacity: 1;
+    left: 0.5rem;
+    transition: opacity 0.3s, left 0.3s;
+  }
+}
+
 .scrollwrapper {
   position: relative;
   overflow: hidden;
@@ -52,7 +67,7 @@
     &:first-child {
       height: 5rem;
       font-weight: bold;
-      font-size: 3rem;
+      font-size: 4rem;
       & + .arrow {
         /* タイトルの直後の矢印は下のスペースを広めにとる */
         margin-bottom: 1.7rem;
