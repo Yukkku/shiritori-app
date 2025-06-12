@@ -14,32 +14,37 @@ export default () => {
     setFinMsg(null);
   };
   let wordInput: HTMLInputElement;
+  const scrollamount = (len: number) => {
+    if (len === 1) return 0;
+    return 4 - len * 7;
+  };
   return (<div class={styles.app}>
-    <div class={styles.scrollwrapper}>
-      <For each={history()}>{word => <><input value={word} disabled /><div class={styles.arrow} /></>}</For>
-      <input ref={elem => wordInput = elem} placeholder={history().length === 1 ? "りんご" : ""} onKeyDown={(e) => {
-        if (e.key !== "Enter") return;
-        const word = wordInput.value;
-        if (word === '') return;
-        if (word[0] !== history().at(-1)!.at(-1)) {
-          setErrFlg(true);
-          return;
-        }
-        setErrFlg(false);
-        if (word.at(-1) === "ん") {
-          setFinMsg("「ん」で終わってしまった!");
-        } else if (history().includes(word)) {
-          setFinMsg(`「${word}」を2回使ってしまった!`);
-        } else {
-          setHistory(history => [...history, word]);
-          wordInput.scrollIntoView({ behavior: "smooth" });
-          wordInput.value = "";
-        }
-      }} readonly={finMsg() != null} />
+    <div class={`${styles.scrollwrapper} ${history().length === 1 ? styles.titleshown : ""}`}>
+      <div class={styles.scrollinner} style={{ top: `${scrollamount(history().length)}rem` }}>
+        <For each={history()}>{word => <><input value={word} disabled /><div class={styles.arrow} /></>}</For>
+        <input ref={elem => wordInput = elem} placeholder={history().length === 1 ? "りんご" : ""} onKeyDown={(e) => {
+          if (e.key !== "Enter") return;
+          const word = wordInput.value;
+          if (word === '') return;
+          if (word[0] !== history().at(-1)!.at(-1)) {
+            setErrFlg(true);
+            return;
+          }
+          setErrFlg(false);
+          if (word.at(-1) === "ん") {
+            setFinMsg("「ん」で終わってしまった!");
+          } else if (history().includes(word)) {
+            setFinMsg(`「${word}」を2回使ってしまった!`);
+          } else {
+            setHistory(history => [...history, word]);
+            wordInput.value = "";
+          }
+        }} readonly={finMsg() != null} />
+      </div>
     </div>
     <div class={styles.inputdeco} />
     <Show when={errFlg()}><Error msg="前の単語とつながってないよ!" /></Show>
     <Show when={finMsg() != null}><Result reason={finMsg()!} history={history()} onRetry={reset} /></Show>
     <button class={styles.reset} onClick={reset}>リセット</button>
-  </div>);
+  </div >);
 };

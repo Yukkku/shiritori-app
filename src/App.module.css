@@ -10,14 +10,29 @@
 .scrollwrapper {
   position: relative;
   overflow: hidden;
-  height: 12rem;
+  width: 30rem;
+  transition: height 0.3s, margin-top 0.3s;
+  height: 10.5rem;
+  margin-top: 3rem;
+  &.titleshown {
+    height: 13.5rem;
+    margin-top: 0;
+    transition: none;
+    & > .scrollinner {
+      transition: none;
+    }
+  }
+}
+.scrollinner {
+  position: absolute;
+  transition: top 0.3s;
   & > input {
     display: block;
     margin: 0;
     border: 0;
     padding: 0;
     outline: none;
-    height: 4rem;
+    height: 3rem;
     background-color: transparent;
     text-align: center;
     font-size: 2rem;
@@ -27,9 +42,12 @@
       color: transparent;
     }
     &:first-child {
-      height: 6rem;
+      height: 5rem;
       font-weight: bold;
       font-size: 3rem;
+      & + div {
+        margin-bottom: 1.7rem;
+      }
     }
   }
 }
@@ -37,7 +55,7 @@
 .arrow {
   width: 100%;
   height: 2.6rem;
-  margin: -0.3rem 0;
+  margin: 0.7em 0;
   background-color: var(--text-color);
   clip-path: polygon(
     calc(50% + 2.5px) 0,
@@ -63,10 +81,10 @@
     display: block;
     position: absolute;
     box-sizing: border-box;
-    width: 2.4rem;
-    height: 2.4rem;
+    width: 2rem;
+    height: 2rem;
     border: 5px solid var(--text-color);
-    bottom: calc(3px + 2rem - 1.2rem);
+    bottom: calc(3px + 2rem - 1rem);
     transform: rotate(45deg);
   }
   &::before {
