@@ -15,8 +15,13 @@
   height: 10.5rem;
   margin-top: 3rem;
   &.titleshown {
+    /* タイトルを表示するときは大きめにする */
     height: 13.5rem;
+    /* 大きくした分, 上の余白を減らす */
     margin-top: 0;
+    /* リセットした際, 一瞬で最初の画面に戻せるようにする.
+     * .titleshownが付与されるタイミングは読み込み時とリセット時だけなので,
+     * プレイ中にモーションが無くなることはない */
     transition: none;
     & > .scrollinner {
       transition: none;
@@ -25,6 +30,7 @@
 }
 .scrollinner {
   position: absolute;
+  /* topの値はApp.tsxで決定し, 付与 */
   transition: top 0.3s;
   & > input {
     display: block;
@@ -38,14 +44,17 @@
     font-size: 2rem;
     color: var(--text-color);
     width: 30rem;
+    /* カーソルが入力欄にあるならプレースホルダーを消す */
     &:focus::placeholder {
       color: transparent;
     }
+    /* タイトルの設定 */
     &:first-child {
       height: 5rem;
       font-weight: bold;
       font-size: 3rem;
-      & + div {
+      & + .arrow {
+        /* タイトルの直後の矢印は下のスペースを広めにとる */
         margin-bottom: 1.7rem;
       }
     }
@@ -71,11 +80,13 @@
 }
 
 .inputdeco {
+  /* 入力欄の下の線 */
   background-color: var(--text-color);
   height: 5px;
   margin-top: -2px;
   width: 30rem;
   position: relative;
+  /* 入力欄の左右の> <の表示 */
   &::before, &::after {
     content: "";
     display: block;

@@ -14,6 +14,7 @@
 .result {
   background-color: var(--back-color);
   padding: 1em calc(1em + 10px);
+  /* 角を削る */
   clip-path: polygon(
     calc(35px - sqrt(2) * 10px) 0,
     0 calc(35px - sqrt(2) * 10px),
@@ -23,6 +24,7 @@
     100% 0
   );
   position: relative;
+  /* 左上, 右下の飾り */
   &::before, &::after {
     content: "";
     display: block;
@@ -43,6 +45,7 @@
       60px 5px
     );
   }
+  /* 左上のを180度まわして右下のにする */
   &::after {
     transform: rotate(180deg);
   }
