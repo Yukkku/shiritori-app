@@ -1,5 +1,5 @@
 .app {
-  padding-top: calc(50vh - 12rem);
+  padding-top: max(calc(50vh - 15rem), 0rem);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,12 +28,12 @@
   width: 30rem;
   transition: height 0.3s, margin-top 0.3s;
   height: 10.5rem;
-  margin-top: 3rem;
+  margin-top: 6rem;
   &.titleshown {
     /* タイトルを表示するときは大きめにする */
     height: 13.5rem;
     /* 大きくした分, 上の余白を減らす */
-    margin-top: 0;
+    margin-top: 3rem;
     /* リセットした際, 一瞬で最初の画面に戻せるようにする.
      * .titleshownが付与されるタイミングは読み込み時とリセット時だけなので,
      * プレイ中にモーションが無くなることはない */
