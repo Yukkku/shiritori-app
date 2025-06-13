@@ -123,6 +123,14 @@
     border-right: none;
     right: calc(-2.4rem * sqrt(2));
   }
+  &.errorcolor {
+    background-color: var(--error-icon);
+    &::before, &::after{
+      border-color: var(--error-icon);
+      transition: border-color 0.2s;
+    }
+    transition: background-color 0.2s;
+  }
 }
 
 .reset {
