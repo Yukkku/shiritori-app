@@ -5,6 +5,13 @@
   align-items: center;
   position: relative;
   text-align: center;
+  width: 100vw;
+  overflow: hidden;
+
+  --input-width: 30rem;
+  @media(width < 38rem) {
+    --input-width: 100vw;
+  }
 }
 
 .smalltitle {
@@ -25,7 +32,7 @@
 .scrollwrapper {
   position: relative;
   overflow: hidden;
-  width: 30rem;
+  width: var(--input-width);
   transition: height 0.3s, margin-top 0.3s;
   height: 10.5rem;
   margin-top: 6rem;
@@ -47,6 +54,7 @@
   position: absolute;
   /* topの値はApp.tsxで決定し, 付与 */
   transition: top 0.3s;
+  width: var(--input-width);
   & > input {
     display: block;
     margin: 0;
@@ -58,7 +66,7 @@
     text-align: center;
     font-size: 2rem;
     color: var(--text-color);
-    width: 30rem;
+    width: var(--input-width);
     /* カーソルが入力欄にあるならプレースホルダーを消す */
     &:focus::placeholder {
       color: transparent;
@@ -99,7 +107,7 @@
   background-color: var(--text-color);
   height: 5px;
   margin-top: -2px;
-  width: 30rem;
+  width: var(--input-width);
   position: relative;
   /* 入力欄の左右の> <の表示 */
   &::before, &::after {
