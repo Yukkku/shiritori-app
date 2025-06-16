@@ -4,7 +4,7 @@
   --back-color: #ddd;
   --text-color: #000;
   --error-back: #daa;
-  --error-icon: #f00;
+  --error-icon: #f40;
   @media(prefers-color-scheme: dark) {
     --back-color: #333;
     --text-color: #fff;
@@ -15,7 +15,7 @@
     --back-color: canvas;
     --text-color: canvasText;
     --error-back: canvas;
-    --error-icon: #f00;
+    --error-icon: #f40;
   }
   background-color: var(--back-color);
   color: var(--text-color);
