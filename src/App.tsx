@@ -1,4 +1,4 @@
-import { createSignal, For, Show } from "solid-js";
+import { createSignal, createMemo, For, Show } from "solid-js";
 import styles from "./App.module.css";
 import Error from "./Error.tsx";
 import Result from "./Result.tsx";
@@ -6,6 +6,7 @@ import { lastChar, firstChar } from "./shiritori.ts";
 
 export default () => {
   const [history, setHistory] = createSignal<string[]>(["しりとり"]);
+  const nextChar = createMemo(() => lastChar(history().at(-1)!));
   // 前の単語と繋がっていないエラーを表示するフラグ
   const [errFlg, setErrFlg] = createSignal(false);
   // 終了画面のメッセージ. 終了画面を出さないときはnullを入れる.
@@ -45,12 +46,12 @@ export default () => {
           // 入力が空の場合は無視
           if (word === '') return;
           // 入力が前の単語と繋がっていない場合は警告を出して終了
-          if (firstChar(word) !== lastChar(history().at(-1)!)) {
+          if (firstChar(word) !== nextChar()) {
             setErrFlg(true);
             return;
           }
           setErrFlg(false);
-          if (word.at(-1) === "ん") {
+          if (lastChar(word) === "ん") {
             setFinMsg("「ん」で終わってしまった!");
           } else if (history().includes(word)) {
             setFinMsg(`「${word}」を2回使ってしまった!`);
