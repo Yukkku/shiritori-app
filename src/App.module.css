@@ -144,6 +144,6 @@
 
 .reset {
   position: absolute;
-  top: 1em;
+  top: calc(1em + 5px * sqrt(2));
   right: 1em;
 }
