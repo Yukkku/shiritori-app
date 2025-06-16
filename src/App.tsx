@@ -7,14 +7,14 @@ import { lastChar, firstChar } from "./shiritori.ts";
 export default () => {
   const [history, setHistory] = createSignal<string[]>(["しりとり"]);
   const nextChar = createMemo(() => lastChar(history().at(-1)!));
-  // 前の単語と繋がっていないエラーを表示するフラグ
-  const [errFlg, setErrFlg] = createSignal(false);
+  // エラーメッセージ. エラーを出さないときはnull
+  const [errMsg, setErrMsg] = createSignal<string | null>(null);
   // 終了画面のメッセージ. 終了画面を出さないときはnullを入れる.
   const [finMsg, setFinMsg] = createSignal<string | null>(null);
   const reset = () => {
     setHistory(["しりとり"]);
     wordInput.value = '';
-    setErrFlg(false);
+    setErrMsg(null);
     setFinMsg(null);
   };
   let wordInput: HTMLInputElement;
@@ -45,12 +45,17 @@ export default () => {
           const word = wordInput.value;
           // 入力が空の場合は無視
           if (word === '') return;
-          // 入力が前の単語と繋がっていない場合は警告を出して終了
-          if (firstChar(word) !== nextChar()) {
-            setErrFlg(true);
+          const first = firstChar(word);
+          if (first == null) {
+            setErrMsg("ひらがなかカタカナで読み方をかいてね!");
             return;
           }
-          setErrFlg(false);
+          // 入力が前の単語と繋がっていない場合は警告を出して終了
+          if (first !== nextChar()) {
+            setErrMsg("前の単語とつながってないよ!");
+            return;
+          }
+          setErrMsg(null);
           if (lastChar(word) === "ん") {
             setFinMsg("「ん」で終わってしまった!");
           } else if (history().includes(word)) {
@@ -63,8 +68,8 @@ export default () => {
         }} readonly={finMsg() != null} />
       </div>
     </div>
-    <div class={`${styles.inputdeco} ${errFlg() ? styles.errorcolor : ""}`} />
-    <Show when={errFlg()}><Error msg="前の単語とつながってないよ!" /></Show>
+    <div class={`${styles.inputdeco} ${errMsg() != null ? styles.errorcolor : ""}`} />
+    <Show when={errMsg() != null}><Error msg={errMsg()!} /></Show>
     <Show when={finMsg() != null}><Result reason={finMsg()!} history={history()} onRetry={reset} /></Show>
     <button class={styles.reset} onClick={reset}><div>リセット</div></button>
   </div >);
