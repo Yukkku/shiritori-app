@@ -3,19 +3,16 @@
   color-scheme: light dark;
   --back-color: #ddd;
   --text-color: #000;
-  --error-back: #daa;
   --error-icon: #f40;
   @media(prefers-color-scheme: dark) {
     --back-color: #333;
     --text-color: #fff;
-    --error-back: #500;
     --error-icon: #f40;
   }
   @media (forced-colors: active) {
     --back-color: canvas;
     --text-color: canvasText;
-    --error-back: canvas;
-    --error-icon: #f40;
+    --error-icon: canvasText;
   }
   background-color: var(--back-color);
   color: var(--text-color);
@@ -26,7 +23,64 @@ body {
 }
 
 button {
-  padding: 1em;
-  border-radius: 999px;
-  border: 1px solid var(--text-color);
+  position: relative;
+  border: none;
+  background-color: transparent;
+  padding: 0 calc(10px * sqrt(2));
+  margin: 0;
+  cursor: pointer;
+  &::before, &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    box-sizing: border-box;
+    width: calc(1rem * sqrt(2) + 2.5px);
+    height: calc(1rem * sqrt(2) + 2.5px);
+    top: calc(50% - 0.5rem * sqrt(2) - 1.25px);
+    transform: rotate(45deg);
+    border: 5px solid var(--text-color);
+  }
+  &::before {
+    left: calc(1rem + 1.25px * sqrt(2) - 1rem / sqrt(2) - 1.25px + sqrt(2) * 5px);
+    border-top: none;
+    border-right: none;
+    transition: left 0.3s;
+  }
+  &::after {
+    right: calc(1rem + 1.25px * sqrt(2) - 1rem / sqrt(2) - 1.25px + sqrt(2) * 5px);
+    border-bottom: none;
+    border-left: none;
+    transition: right 0.3s;
+  }
+  & > div {
+    height: 2rem;
+    padding: 0 1rem;
+    background-color: rgba(255, 255, 255, 50%);
+    transition: background-color 0.3s;
+    clip-path: polygon(
+      0 50%,
+      1rem 0,
+      calc(100% - 1rem) 0,
+      100% 50%,
+      calc(100% - 1rem) 100%,
+      1rem 100%
+    );
+    &::before {
+      content: "";
+      display: inline-block;
+      height: 100%;
+      vertical-align: calc(0.5cap - 1rem);
+    }
+  }
+  &:hover {
+    &::before {
+      left: calc(1rem + 1.25px * sqrt(2) - 1rem / sqrt(2) - 1.25px);
+    }
+    &::after {
+      right: calc(1rem + 1.25px * sqrt(2) - 1rem / sqrt(2) - 1.25px);
+    }
+    & > div {
+      background-color: rgba(255, 255, 255);
+    }
+  }
 }
