@@ -45,3 +45,14 @@ export const firstChar = (s: string): string | null => {
   if (t == null) return null;
   return normalizeKana(t.match(/^([ぁ-ちつ-ゖァ-チツ-ヶ])[\u3099\u309a]?ー?[っッ]?/u)![1]);
 };
+
+export const dropout = "ん";
+
+export const gametitle = "しりとり";
+
+export default {
+  firstChar,
+  lastChar,
+  dropout,
+  gametitle,
+};
