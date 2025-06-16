@@ -2,6 +2,7 @@ import { createSignal, For, Show } from "solid-js";
 import styles from "./App.module.css";
 import Error from "./Error.tsx";
 import Result from "./Result.tsx";
+import { lastChar, firstChar } from "./shiritori.ts";
 
 export default () => {
   const [history, setHistory] = createSignal<string[]>(["しりとり"]);
@@ -44,7 +45,7 @@ export default () => {
           // 入力が空の場合は無視
           if (word === '') return;
           // 入力が前の単語と繋がっていない場合は警告を出して終了
-          if (word[0] !== history().at(-1)!.at(-1)) {
+          if (firstChar(word) !== lastChar(history().at(-1)!)) {
             setErrFlg(true);
             return;
           }
