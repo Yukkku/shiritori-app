@@ -52,7 +52,7 @@ export default () => {
           }
           // 入力が前の単語と繋がっていない場合は警告を出して終了
           if (first !== nextChar()) {
-            setErrMsg("前の単語とつながってないよ!");
+            setErrMsg("はじめの文字が違うよ!");
             return;
           }
           setErrMsg(null);
@@ -69,6 +69,7 @@ export default () => {
       </div>
     </div>
     <div class={`${styles.inputdeco} ${errMsg() != null ? styles.errorcolor : ""}`} />
+    <div>はじめの文字: {nextChar()}</div>
     <Show when={errMsg() != null}><Error msg={errMsg()!} /></Show>
     <Show when={finMsg() != null}><Result reason={finMsg()!} history={history()} onRetry={reset} /></Show>
     <button class={styles.reset} onClick={reset}><div>リセット</div></button>
