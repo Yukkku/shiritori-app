@@ -67,6 +67,7 @@
     font-size: 2rem;
     color: var(--text-color);
     width: var(--input-width);
+    opacity: 1;
     /* カーソルが入力欄にあるならプレースホルダーを消す */
     &:focus::placeholder {
       color: transparent;
