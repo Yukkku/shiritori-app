@@ -7,7 +7,7 @@ import EN from "./shiritorien.ts";
 
 export default () => {
   // 設定の言語
-  const [lang, segLang] = createSignal<"ja" | "en">("ja");
+  const [lang, setLang] = createSignal<"ja" | "en">("ja");
   // 翻訳する
   const translation = <T = string>(ja: T, en: T): T => lang() === "ja" ? ja : en;
   const langconfig = createMemo(() => translation(JA, EN));
@@ -79,6 +79,9 @@ export default () => {
     <div>{translation("はじめの文字", "First Letter")}: {nextChar()}</div>
     <Show when={errMsg() != null}><Error msg={errMsg()!} /></Show>
     <Show when={finMsg() != null}><Result lang={lang()} reason={finMsg()!} history={history()} onRetry={reset} /></Show>
-    <button class={styles.reset} onClick={reset}><div>{translation("リセット", "Reset")}</div></button>
+    <div class={styles.controll}>
+      <button class={styles.reset} onClick={() => setLang(lang => lang === "ja" ? "en" : "ja")}><div>{translation("English", "日本語")}</div></button>
+      <button class={styles.reset} onClick={reset}><div>{translation("リセット", "Reset")}</div></button>
+    </div>
   </div >);
 };

@@ -142,8 +142,11 @@
   }
 }
 
-.reset {
+.controll {
   position: absolute;
   top: calc(1em + 5px * sqrt(2));
   right: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: calc(1em + 5px * sqrt(2));
 }
