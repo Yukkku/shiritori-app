@@ -3,15 +3,18 @@
   color-scheme: light dark;
   --back-color: #ddd;
   --text-color: #000;
+  --button-color: #fff;
   --error-icon: #f40;
   @media(prefers-color-scheme: dark) {
     --back-color: #333;
     --text-color: #fff;
+    --button-color: #000;
     --error-icon: #f40;
   }
   @media (forced-colors: active) {
     --back-color: canvas;
     --text-color: canvasText;
+    --button-color: buttonFace;
     --error-icon: canvasText;
   }
   background-color: var(--back-color);
@@ -55,7 +58,7 @@ button {
   & > div {
     height: 2rem;
     padding: 0 1rem;
-    background-color: rgba(255, 255, 255, 50%);
+    background-color: color-mix(in srgb, var(--button-color) 50%, transparent);
     transition: background-color 0.3s;
     clip-path: polygon(
       0 50%,
@@ -80,7 +83,7 @@ button {
       right: calc(1rem + 1.25px * sqrt(2) - 1rem / sqrt(2) - 1.25px);
     }
     & > div {
-      background-color: rgba(255, 255, 255);
+      background-color: var(--button-color);
     }
   }
 }
