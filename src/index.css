@@ -9,7 +9,7 @@
     --back-color: #333;
     --text-color: #fff;
     --error-back: #500;
-    --error-icon: #f00;
+    --error-icon: #f40;
   }
   @media (forced-colors: active) {
     --back-color: canvas;
